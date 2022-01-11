@@ -22,6 +22,6 @@ typedef long double 		f96;
 /************************************************************/
 /*	pointer to function=>for declarition pf x = & fun();	*/
 /************************************************************/
-typedef	void(*pf)(void)
+typedef	void(*pf)(void);
 
 #endif

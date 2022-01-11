@@ -15,12 +15,11 @@
 #include	"EXTI_priv.h"
 
 
+volatile	pf	x;
+
 /************************************************************/
 /* 		Description :  ExTI0	Implemention 		   	   */
 /************************************************************/
-
-
-volatile	pf	x;
 
 
 /************************************************************/
@@ -29,7 +28,6 @@ volatile	pf	x;
 
 void	EXTI0_VoidInitialization(void)
 {
-	
 	/**	Set The Sense Mode		*/
 	#if   SenseMode == LowLevel
 		CLEAR_BIT(MCUCR, 0);
@@ -79,18 +77,6 @@ void	EXTI0_VoidDisableEXTI0()
 	
 }
 
-/************************************************************/
-/* Description :  function to set callback function			*/
-/************************************************************/
-
-void	EXTI0_VoidSetCallBack(pf	copy_FuncAddress)
-{
-	if(copy_FuncAddress != NULL)
-	{
-		x = copy_FuncAddress();
-	}
-}
-
 
 
 /************************************************************/
@@ -124,6 +110,20 @@ void	EXTI0_VoidSetSenseMode(u8	copy_U8SenseMode)
 	else
 	{
 		//Error
+	}
+}
+
+
+
+/************************************************************/
+/* Description :  function to set callback function			*/
+/************************************************************/
+
+void	EXTI0_VoidSetCallBack(pf	copy_FuncAddress)
+{
+	if(copy_FuncAddress != NULL)
+	{
+		x = copy_FuncAddress();
 	}
 }
 

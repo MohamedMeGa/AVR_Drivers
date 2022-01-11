@@ -37,8 +37,8 @@ void	EXTI0_VoidSetCallBack(pf	copy_FuncAddress);
 
 
 /************************************************************/
-/** Description :  function to set the sense mode of the 
-				Interrupt									*/
+/** Description :  function to set the sense mode of the 	*/
+/**				Interrupt									*/
 /************************************************************/	
 
 void	EXTI0_VoidSetSenseMode(u8	copy_U8SenseMode);

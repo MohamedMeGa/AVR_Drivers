@@ -19,7 +19,7 @@
 
 
 /* Description :  function to set 7 segment type and value			*/
-				  
+
 void	SEV_VoidSET7SegmentValue(u8	COPY_U8SEVSEGMENTNUM, u8	COPY_U8SEVSEGMENTVALUE);
 
 

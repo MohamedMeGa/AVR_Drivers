@@ -8,7 +8,7 @@
 #ifndef	KEYPAD_INT_H
 #define	KEYPAD_INT_H
 	
-const u8 KPD_au8SwitchVal[4][4] =
+/*const u8 KPD_au8SwitchVal[4][4] =
 {
   {
     0x04,
@@ -31,14 +31,22 @@ const u8 KPD_au8SwitchVal[4][4] =
     0x09,
     0x0D } 
 };
-
+*/
 /***************************************************/
 /* Description :  PROTOTYPE DECLARTION 		   	   */
+/***************************************************/
 
 
+/***************************************************/
+/* Description :  function to init THE KEYPAD	*/
+/***************************************************/
+void	KEYPAD_VoidInit(void);
 
+
+/***************************************************/
 /* Description :  function to GET THE VALUE FROM KEYPAD	*/
-				  
+/***************************************************/
+
 u8	KEYPAD_U8GetPressedKey(void);
 
 #endif
