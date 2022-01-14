@@ -9,16 +9,6 @@
 #define	TIMER0_CONFIG_H
 
 /***************************************************/
-/**			Compare Output Mode :				   */
-/**								TIMER0_NO_ACTION   */
-/**								TIMER0_TOGGLE	   */
-/**								TIMER0_CLEAR	   */
-/**								TIMER0_SET		   */
-/***************************************************/
-#define		TIMER0_COM_EVENT		TIMER0_NO_ACTION
-
-
-/***************************************************/
 /**			TIMER0 Mode :				   		   */
 /**							TIMER0_NORMAL    	   */
 /**							TIMER0_PWM	   		   */
@@ -26,6 +16,17 @@
 /**							TIMER0_FASTPWM		   */
 /***************************************************/
 #define		TIMER0_MODE				TIMER0_NORMAL
+
+
+
+/***************************************************/
+/**			Compare Output Mode :				   */
+/**								TIMER0_NO_ACTION   */
+/**								TIMER0_TOGGLE	   */
+/**								TIMER0_CLEAR	   */
+/**								TIMER0_SET		   */
+/***************************************************/
+#define		TIMER0_COM_EVENT		TIMER0_NO_ACTION
 
 
 /***************************************************/

@@ -153,7 +153,7 @@ void	USART_VoidTransmit(u8 Copy_u8Date)
 
 
 /************************************************************/
-/* Description :  function for Recieve date using USART		*/
+/* Description :  function for Recieve date using USART	*/
 /*				  input	 :	void							*/
 /*				  output :	u8								*/
 /************************************************************/
@@ -162,7 +162,7 @@ void	USART_VoidTransmit(u8 Copy_u8Date)
 /************************************************************/
 u8	USART_U8Recieve(void)
 {
-	/* Wait for data to be received 						*/
+	/* Wait for data to be received 				*/
 	while(GET_BIT(UCSRA, 7) == 0);
 	
 	/**	Clear the Flag (USART Recieve Complete) 			*/

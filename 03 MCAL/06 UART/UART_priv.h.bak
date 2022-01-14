@@ -10,7 +10,7 @@
 
 
 /***************************************************/
-/* Description :  MEMEROY MAPPING USART register   */
+/* Description :  MEMEROY MAPPING USART register  */
 /***************************************************/
 
 	#define	UDR		*((volatile	u8	*)	0X2C)

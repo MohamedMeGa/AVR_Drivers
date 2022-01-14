@@ -269,8 +269,8 @@ void	__vector_12(void)
 }
 
 
-void	__vector_11(void)	__attribute__((signal, used));
-void	__vector_11(void)
+void	__vector_10(void)	__attribute__((signal, used));
+void	__vector_10(void)
 {
 	Timer0_CTC_CallBack();
 }

@@ -8,37 +8,6 @@
 #ifndef	TIMER0_PRIV_H
 #define	TIMER0_PRIV_H
 
-/***************************************************/
-/**			Compare Output Mode Selections Options */
-/***************************************************/
-#define		TIMER0_NO_ACTION	4					
-#define		TIMER0_TOGGLE		7
-#define		TIMER0_CLEAR		9
-#define		TIMER0_SET			2
-
-
-/***************************************************/
-/**			TIMER0 Mode selection Options		   */
-/***************************************************/
-#define		TIMER0_NORMAL		0
-#define		TIMER0_PWM			1
-#define		TIMER0_CTC			2
-#define		TIMER0_FASTPWM		3
-
-
-/***************************************************/
-/**			Prescaller selections Options		   */
-/***************************************************/
-#define		NO_CLOCK			0
-#define		CLK_NO_PRES			1
-#define		CLK_NO_PRES			2
-#define		PRES_64_DIV			3
-#define		PRES_256_DIV		4
-#define		PRES_1024_DIV		5
-#define		External_Falling	6
-#define		External_Rising		7
-
-
 
 
 

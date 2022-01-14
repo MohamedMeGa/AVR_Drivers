@@ -30,6 +30,7 @@
 /**			Prescaller selections Options		   */
 /***************************************************/
 #define		NO_CLOCK			0
+#define		CLK_NO_PRES			1
 #define		CLK_NO_PRES			2
 #define		PRES_64_DIV			3
 #define		PRES_256_DIV		4

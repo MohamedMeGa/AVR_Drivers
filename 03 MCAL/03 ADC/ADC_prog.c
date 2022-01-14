@@ -43,7 +43,7 @@ void	ADC_VoidInitialization(void)
 	CLEAR_BIT(ADCSRA, 5);
 
 /**				Interrupt flag CLEARED						**/
-	SET_BIT(ADCSRA, 4)
+	SET_BIT(ADCSRA, 4);
 	
 /**				Deactive ADC Interrupt						**/
 	CLEAR_BIT(ADCSRA, 3);
@@ -57,14 +57,14 @@ void	ADC_VoidInitialization(void)
 	
 /**			Reference Selections Options		   */
 	#if	REF_SELECT == AREF
-		CLEAR_BIT(ADMUX,0);
-		CLEAR_BIT(ADMUX,1);
+		CLEAR_BIT(ADMUX,6);
+		CLEAR_BIT(ADMUX,7);
 	#elif	REF_SELECT == AVCC
-		SET_BIT(ADMUX,0);
-		CLEAR_BIT(ADMUX,1);
+		SET_BIT(ADMUX,6);
+		CLEAR_BIT(ADMUX,7);
 	#elif	REF_SELECT == Internal
-		SET_BIT(ADMUX,0);
-		SET_BIT(ADMUX,1);
+		SET_BIT(ADMUX,6);
+		SET_BIT(ADMUX,7);
 	#endif
 
 
@@ -143,26 +143,27 @@ void	ADC_VoidInitialization(void)
 }
 /************************************************************/
 /* Description :  function to Read the ADC value 			*/
-/*				  input	 :	u8								*/
-/*				  output :	void							*/
+/*				  input	 :	void								*/
+/*				  output :	u16							*/
 /************************************************************/
 /* Pre_condition  :  this function must be used after  		*/
 /*     				 Start conversion	 					*/
 /************************************************************/
-u16		ADC_U16ReadADC()
+u16		ADC_U16ReadADC(void)
 {
 	u16	Local_ADCRead = 0;
 	
-	//Start Conversion
+	/**		Start Conversion								*/
 	ADC_VoidStartConverstion()
 	
 	while(GET_BIT(ADCSRA, 4) == 0);
 	SET_BIT(ADCSRA, 4);
 
-	#if	REG_ADJ == Left_Adgustment
-		Local_ADCRead	=  ADCH ## ADCL;
+	#if		REG_ADJ == Left_Adgustment
+		Local_ADCRead	=  ADCH ;
+		
 	#elif	REG_ADJ == Right_Adgustment
-		Local_ADCRead	=  ADCL ## ADCH;
+		Local_ADCRead	=  ADCH ## ADCL;
 	#endif
 	
 	return	Local_ADCRead;
