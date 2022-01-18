@@ -103,12 +103,12 @@ u8	DIO_u8GetPinValue(u8	copy_u8PinNum)
 	u8 Loc_u8ReturnPinValue;
 	if(copy_u8PinNum >= DIO_U8_PORTA_START && copy_u8PinNum <= DIO_U8_PORTA_END)
 	{
-		Loc_u8ReturnPinValue = GET_BIT(PINA, copy_u8PinNum);
+		Loc_u8ReturnPinValue = GET_BIT(PORTA, copy_u8PinNum);
 	}
 	else if(copy_u8PinNum >= DIO_U8_PORTB_START && copy_u8PinNum <= DIO_U8_PORTB_END)
 	{
 		copy_u8PinNum = copy_u8PinNum - DIO_U8_PORTA_SIZE;
-		Loc_u8ReturnPinValue = GET_BIT(PINB, copy_u8PinNum);
+		Loc_u8ReturnPinValue = GET_BIT(PORTB, copy_u8PinNum);
 		
 	}
 	
@@ -116,14 +116,14 @@ u8	DIO_u8GetPinValue(u8	copy_u8PinNum)
 	{
 		copy_u8PinNum = copy_u8PinNum - (DIO_U8_PORTA_SIZE + DIO_U8_PORTB_SIZE);
 		
-		Loc_u8ReturnPinValue = GET_BIT(PINC, copy_u8PinNum);
+		Loc_u8ReturnPinValue = GET_BIT(PORTC, copy_u8PinNum);
 	}
 	
 	else if(copy_u8PinNum >= DIO_U8_PORTD_START && copy_u8PinNum <= DIO_U8_PORTD_END)
 	{
 		copy_u8PinNum = copy_u8PinNum - (DIO_U8_PORTA_SIZE + DIO_U8_PORTB_SIZE + DIO_U8_PORTC_SIZE);
 		
-		Loc_u8ReturnPinValue = GET_BIT(PIND, copy_u8PinNum);
+		Loc_u8ReturnPinValue = GET_BIT(PORTD, copy_u8PinNum);
 	}
 	return Loc_u8ReturnPinValue;
 }

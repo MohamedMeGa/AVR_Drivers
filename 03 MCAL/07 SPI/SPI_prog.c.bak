@@ -230,7 +230,7 @@ void	SPI_VoidSetCallBack(pf copy_functionAddress)
 /* Pre_condition  :  this function must be used after  		*/
 /*     				 SPI Initializtion 						*/
 /************************************************************/
-u8		SPI_VoidSendTransfer(u8 Copy_u8Date)
+u8		SPI_VoidTransfer(u8 Copy_u8Date)
 {
 	SPDR	=	Copy_u8Date;
 	while(GET_BIT(SPSR, 7) == 0);

@@ -28,11 +28,11 @@
 /***************************************************/
 /**			DATE SIZE selections Options		   */
 /***************************************************/
-#define		5_BIT				0
-#define		6_BIT				1
-#define		7_BIT				2
-#define		8_BIT				3
-#define		9_BIT				4
+#define		DATA_5BIT				0
+#define		DATA_6BIT				1
+#define		DATA_7BIT				2
+#define		DATA_8BIT				3
+#define		DATA_9BIT				4
 
 
 /***************************************************/

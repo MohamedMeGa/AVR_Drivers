@@ -15,9 +15,9 @@
 /************************************************************/
 /**			EXTI Directives						 			*/
 /************************************************************/
-#include	"USART_int.h"
-#include	"USART_config.h"
-#include	"USART_priv.h"
+#include	"UART_int.h"
+#include	"UART_config.h"
+#include	"UART_priv.h"
 
 
 /************************************************************/
@@ -81,23 +81,23 @@ void	USART_VoidInitialization(void)
 	SET_BIT(UCSRB, 3);
 	
 	/**			DATE SIZE Selection Options				*/
-	#if		DATE_SIZE	==	5_BIT
+	#if		DATE_SIZE	==	DATA_5BIT
 		CLEAR_BIT(Loc_u8UCSRC, 1);
 		CLEAR_BIT(Loc_u8UCSRC, 2);
 		CLEAR_BIT(UCSRB, 2);
-	#elif	DATE_SIZE	==	6_BIT
+	#elif	DATE_SIZE	==	DATA_6BIT
 		SET_BIT(Loc_u8UCSRC, 	1);
 		CLEAR_BIT(Loc_u8UCSRC, 	2);
 		CLEAR_BIT(UCSRB, 2);
-	#elif	DATE_SIZE	==	7_BIT
+	#elif	DATE_SIZE	==	DATA_7BIT
 		CLEAR_BIT(Loc_u8UCSRC, 	1);
 		SET_BIT(Loc_u8UCSRC	, 	2);
 		CLEAR_BIT(UCSRB, 2);
-	#elif	DATE_SIZE	==	8_BIT
+	#elif	DATE_SIZE	==	DATA_8BIT
 		SET_BIT(Loc_u8UCSRC, 1);
 		SET_BIT(Loc_u8UCSRC, 2);
 		CLEAR_BIT(UCSRB, 2);
-	#elif	DATE_SIZE	==	9_BIT
+	#elif	DATE_SIZE	==	DATA_9BIT
 		SET_BIT(Loc_u8UCSRC, 1);
 		SET_BIT(Loc_u8UCSRC, 2);
 		SET_BIT(UCSRB, 2);

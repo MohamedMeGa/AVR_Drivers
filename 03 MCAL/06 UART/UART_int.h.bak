@@ -89,7 +89,7 @@ void	USART_VoidTransmit(u8 Copy_u8Date);
 
 
 /************************************************************/
-/* Description :  function for Recieve date using USART	*/
+/* Description :  function for Recieve date using USART		*/
 /*				  input	 :	void							*/
 /*				  output :	u8								*/
 /************************************************************/

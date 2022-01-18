@@ -11,7 +11,7 @@
 
 
 /***************************************************/
-/* Description :  MEMEROY MAPPING SPI register     */
+/* Description :  MEMEROY MAPPING USART register  */
 /***************************************************/
 
 	#define	SPCR	*((volatile	u8	*)	0x2D)
