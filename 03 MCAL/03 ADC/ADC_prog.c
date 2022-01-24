@@ -19,7 +19,7 @@
 #include	"ADC_config.h"
 #include	"ADC_priv.h"
 
-
+#define 	NULL	(void *)0
 /************************************************************/
 /* Description :  ADC	Implemention 		   	   			*/
 /************************************************************/
@@ -141,33 +141,6 @@ void	ADC_VoidInitialization(void)
 	
 
 }
-/************************************************************/
-/* Description :  function to Read the ADC value 			*/
-/*				  input	 :	void								*/
-/*				  output :	u16							*/
-/************************************************************/
-/* Pre_condition  :  this function must be used after  		*/
-/*     				 Start conversion	 					*/
-/************************************************************/
-u16		ADC_U16ReadADC(void)
-{
-	u16	Local_ADCRead = 0;
-	
-	/**		Start Conversion								*/
-	ADC_VoidStartConverstion()
-	
-	while(GET_BIT(ADCSRA, 4) == 0);
-	SET_BIT(ADCSRA, 4);
-
-	#if		REG_ADJ == Left_Adgustment
-		Local_ADCRead	=  ADCH ;
-		
-	#elif	REG_ADJ == Right_Adgustment
-		Local_ADCRead	=  ADCH ## ADCL;
-	#endif
-	
-	return	Local_ADCRead;
-}
 
 
 
@@ -185,6 +158,37 @@ void	ADC_VoidADCEnable(void)
 	
 	SET_BIT(ADCSRA, 7);
 	
+}
+
+
+
+
+/************************************************************/
+/* Description :  function to Read the ADC value 			*/
+/*				  input	 :	void								*/
+/*				  output :	u16							*/
+/************************************************************/
+/* Pre_condition  :  this function must be used after  		*/
+/*     				 Start conversion	 					*/
+/************************************************************/
+u16		ADC_U16ReadADC(void)
+{
+	u16	Local_ADCReturn = 0;
+	
+	/**		Start Conversion								*/
+	ADC_VoidStartConverstion();
+	
+	while(GET_BIT(ADCSRA, 4) == 0);
+	SET_BIT(ADCSRA, 4);
+
+	#if		REG_ADJ == Left_Adgustment
+		Local_ADCReturn	=  ADCH ;
+		
+	#elif	REG_ADJ == Right_Adgustment
+		Local_ADCReturn	=  ADCH ## ADCL;
+	#endif
+	
+	return	Local_ADCReturn;
 }
 
 
@@ -299,7 +303,7 @@ void	ADC_VoidSetADCCallback(pf	copy_FunctionAdress)
 	}
 }
 
-
+//vector 17
 void	__vector_20(void)	__attribute__(( signal , used ));
 
 void	__vector_20(void)

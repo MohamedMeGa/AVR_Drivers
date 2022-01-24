@@ -40,6 +40,6 @@
 /**							External_Falling	   */
 /**							External_Rising		   */
 /***************************************************/
-#define		TIMER0_PRESCALLER		NO_CLOCK
+#define		TIMER0_PRESCALLER		PRES_8_DIV
 
 #endif

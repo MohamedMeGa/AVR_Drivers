@@ -44,7 +44,7 @@ void	DIO_voidSetPinValue(u8	copy_u8PinNum, u8	copy_u8PinValue)
 {
 	if(copy_u8PinNum >= DIO_U8_PORTA_START && copy_u8PinNum <= DIO_U8_PORTA_END)
 	{
-		if(copy_u8PinValue == DIO_u8_HIGH)
+		if(copy_u8PinValue == DIO_HIGH)
 		{
 			SET_BIT(PORTA, copy_u8PinNum);
 		}
@@ -56,7 +56,7 @@ void	DIO_voidSetPinValue(u8	copy_u8PinNum, u8	copy_u8PinValue)
 	else if(copy_u8PinNum >= DIO_U8_PORTB_START && copy_u8PinNum <= DIO_U8_PORTB_END)
 	{
 		copy_u8PinNum = copy_u8PinNum - DIO_U8_PORTA_SIZE;
-		if(copy_u8PinValue == DIO_u8_HIGH)
+		if(copy_u8PinValue == DIO_HIGH)
 		{
 			SET_BIT(PORTB, copy_u8PinNum);
 		}
@@ -70,7 +70,7 @@ void	DIO_voidSetPinValue(u8	copy_u8PinNum, u8	copy_u8PinValue)
 	{
 		copy_u8PinNum = copy_u8PinNum - (DIO_U8_PORTA_SIZE + DIO_U8_PORTB_SIZE);
 		
-		if(copy_u8PinValue == DIO_u8_HIGH)
+		if(copy_u8PinValue == DIO_HIGH)
 		{
 			SET_BIT(PORTC, copy_u8PinNum);
 		}
@@ -84,7 +84,7 @@ void	DIO_voidSetPinValue(u8	copy_u8PinNum, u8	copy_u8PinValue)
 	{
 		copy_u8PinNum = copy_u8PinNum - (DIO_U8_PORTA_SIZE + DIO_U8_PORTB_SIZE + DIO_U8_PORTC_SIZE);
 		
-		if(copy_u8PinValue == DIO_u8_HIGH)
+		if(copy_u8PinValue == DIO_HIGH)
 		{
 			SET_BIT(PORTD, copy_u8PinNum);
 		}

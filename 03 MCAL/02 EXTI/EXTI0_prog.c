@@ -10,9 +10,9 @@
 #include	"Bit_Math.h"
 
 /**			EXTI Directives						 */
-#include	"EXTI_int.h"
-#include	"EXTI_config.h"
-#include	"EXTI_priv.h"
+#include	"EXTI0_int.h"
+#include	"EXTI0_config.h"
+#include	"EXTI0_priv.h"
 
 
 volatile	pf	x;
@@ -129,7 +129,7 @@ void	EXTI0_VoidSetCallBack(pf	copy_FuncAddress)
 
 
 /** 			Linker Problem solved				 */
-void __vector_1(void)	__attribute__((signal, used);
+void __vector_1(void)	__attribute__((signal, used));
 
 void __vector_1(void)
 {

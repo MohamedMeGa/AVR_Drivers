@@ -136,7 +136,7 @@ void	TIMER0_VoidInitialization(void)
 /*     				 TIMER0 Initializtion	 				*/
 /************************************************************/
 
-void	TIMER0_VoidEnableOVINTERRUPT(void)
+void	TIMER0_VoidEnableOVInterrupt(void)
 {
 	SET_BIT(TIMSK, 0);
 }
@@ -153,7 +153,7 @@ void	TIMER0_VoidEnableOVINTERRUPT(void)
 /*     				 TIMER0 Initializtion	 				*/
 /************************************************************/
 
-void	TIMER0_VoidDisableOVINTERRUPT(void)
+void	TIMER0_VoidDisableOVInterrupt(void)
 {
 	CLEAR_BIT(TIMSK, 0);
 }
@@ -175,7 +175,7 @@ void	TIMER0_VoidDisableOVINTERRUPT(void)
 /*     				 TIMER0 Initializtion	 				*/
 /************************************************************/
 
-void	TIMER0_VoidEnableCTCINTERRUPT(void)
+void	TIMER0_VoidEnableCTCInterrupt(void)
 {
 	SET_BIT(TIMSK, 1);
 }
@@ -192,7 +192,7 @@ void	TIMER0_VoidEnableCTCINTERRUPT(void)
 /*     				 TIMER0 Initializtion	 				*/
 /************************************************************/
 
-void	TIMER0_VoidDisableCTCINTERRUPT(void)
+void	TIMER0_VoidDisableCTCInterrupt(void)
 {
 	CLEAR_BIT(TIMSK, 1);
 }
@@ -262,15 +262,15 @@ void	TIMER0_VoidSetCTCCallback(pf	copy_FunctionAdress)
 }
 
 
-void	__vector_12(void)	__attribute__((signal, used));
-void	__vector_12(void)
+void	__vector_11(void)	__attribute__((signal, used));
+void	__vector_11(void)
 {
 	Timer0_OV_CallBack();
 }
 
 
-void	__vector_11(void)	__attribute__((signal, used));
-void	__vector_11(void)
+void	__vector_10(void)	__attribute__((signal, used));
+void	__vector_10(void)
 {
 	Timer0_CTC_CallBack();
 }

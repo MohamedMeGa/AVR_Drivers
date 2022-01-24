@@ -18,8 +18,8 @@
 /**			Reference Selections Options		   */
 /***************************************************/
 #define		AREF				4					//Internal Vref turned off
-#define		AVCC				7
-#define		Internal			2.56
+#define		AVCC				5
+#define		Internal			2
 
 
 /***************************************************/
@@ -74,6 +74,20 @@ void	ADC_VoidInitialization(void);
 
 
 
+/************************************************************/
+/* Description :  function to Enable the ADC 	 			*/
+/*				  input	 :	void							*/
+/*				  output :	void							*/
+/************************************************************/
+/* Pre_condition  :  this function must be used after  		*/
+/*     				 ADC Initializtion	 					*/
+/************************************************************/
+
+void	ADC_VoidADCEnable(void);
+
+
+
+
 
 /************************************************************/
 /* Description :  function to Read the ADC value 			*/
@@ -86,19 +100,6 @@ void	ADC_VoidInitialization(void);
 
 u16		ADC_U16ReadADC(void);
 
-
-
-
-/************************************************************/
-/* Description :  function to Enable the ADC 	 			*/
-/*				  input	 :	void							*/
-/*				  output :	void							*/
-/************************************************************/
-/* Pre_condition  :  this function must be used after  		*/
-/*     				 ADC Initializtion	 					*/
-/************************************************************/
-
-void	ADC_VoidADCEnable(void);
 
 
 

@@ -69,7 +69,7 @@ void	TIMER0_VoidInitialization(void);
 /*     				 TIMER0 Initializtion	 				*/
 /************************************************************/
 
-void	TIMER0_VoidEnableOVINTERRUPT(void);
+void	TIMER0_VoidEnableOVInterrupt(void);
 
 
 
@@ -83,7 +83,7 @@ void	TIMER0_VoidEnableOVINTERRUPT(void);
 /*     				 TIMER0 Initializtion	 				*/
 /************************************************************/
 
-void	TIMER0_VoidDisableOVINTERRUPT(void);
+void	TIMER0_VoidDisableOVInterrupt(void);
 
 
 
@@ -98,7 +98,7 @@ void	TIMER0_VoidDisableOVINTERRUPT(void);
 /*     				 TIMER0 Initializtion	 				*/
 /************************************************************/
 
-void	TIMER0_VoidEnableCTCINTERRUPT(void);
+void	TIMER0_VoidEnableCTCInterrupt(void);
 
 
 
@@ -112,7 +112,7 @@ void	TIMER0_VoidEnableCTCINTERRUPT(void);
 /*     				 TIMER0 Initializtion	 				*/
 /************************************************************/
 
-void	TIMER0_VoidDisableCTCINTERRUPT(void);
+void	TIMER0_VoidDisableCTCInterrupt(void);
 
 
 
