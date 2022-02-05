@@ -15,7 +15,7 @@
 #include	"EXTI0_priv.h"
 
 
-volatile	pf	x;
+volatile	pf	EXTI0_CallBackFunction;
 
 /************************************************************/
 /* 		Description :  ExTI0	Implemention 		   	   */
@@ -123,7 +123,7 @@ void	EXTI0_VoidSetCallBack(pf	copy_FuncAddress)
 {
 	if(copy_FuncAddress != NULL)
 	{
-		x = copy_FuncAddress();
+		EXTI0_CallBackFunction = copy_FuncAddress();
 	}
 }
 
@@ -133,6 +133,6 @@ void __vector_1(void)	__attribute__((signal, used));
 
 void __vector_1(void)
 {
-	x();
+	EXTI0_CallBackFunction();
 }
 

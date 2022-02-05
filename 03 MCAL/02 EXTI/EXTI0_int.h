@@ -13,10 +13,10 @@
 /************************************************************/
 /**			Sense Mode Options					 			 */
 /************************************************************/
-#define		FallingEdge			0
-#define		RisingEdge			1
-#define		IOC					2
-#define		LowLevel			3
+#define		FallingEdge			2
+#define		RisingEdge			3
+#define		IOC					4
+#define		LowLevel			5
 
 
 /************************************************************/

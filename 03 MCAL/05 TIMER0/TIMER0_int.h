@@ -20,22 +20,23 @@
 /***************************************************/
 /**			TIMER0 Mode selection Options		   */
 /***************************************************/
-#define		TIMER0_NORMAL		0
-#define		TIMER0_PWM			1
-#define		TIMER0_CTC			2
-#define		TIMER0_FASTPWM		3
+#define		TIMER0_NORMAL		2
+#define		TIMER0_PWM			3
+#define		TIMER0_CTC			4
+#define		TIMER0_FASTPWM		5
 
 
 /***************************************************/
 /**			Prescaller selections Options		   */
 /***************************************************/
-#define		NO_CLOCK			0
+#define		NO_CLOCK			1
 #define		CLK_NO_PRES			2
-#define		PRES_64_DIV			3
-#define		PRES_256_DIV		4
-#define		PRES_1024_DIV		5
-#define		External_Falling	6
-#define		External_Rising		7
+#define		PRES_8_DIV			3
+#define		PRES_64_DIV			4
+#define		PRES_256_DIV		5
+#define		PRES_1024_DIV		6
+#define		External_Falling	7
+#define		External_Rising		8
 
 
 
