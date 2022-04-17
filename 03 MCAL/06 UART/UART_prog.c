@@ -32,8 +32,8 @@
 
 void	USART_VoidInitialization(void)
 {
-	u8	Loc_u8BaudeRateEquation;
-	u8	Loc_u8UCSRC;
+	u16	Loc_u8BaudeRateEquation = 0;
+	u8	Loc_u8UCSRC = 0;
 	
 	#if		MODE_OF_OPERATION	==	ASYNCRONOUS
 		CLEAR_BIT(Loc_u8UCSRC, 6);

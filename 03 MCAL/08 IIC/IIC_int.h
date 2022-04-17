@@ -23,8 +23,7 @@
 /*				  output :	void							*/
 /************************************************************/
 
-void	SPI_VoidMASTERInitialization(void);
-
+void	TWI_VoidInitialization(void);
 
 
 
@@ -35,7 +34,7 @@ void	SPI_VoidMASTERInitialization(void);
 /*				  output :	void							*/
 /************************************************************/
 
-void	SPI_VoidSLAVEInitialization(void);
+void	TWI_VoidSendByte(u8 data);
 
 
 
@@ -49,7 +48,7 @@ void	SPI_VoidSLAVEInitialization(void);
 /* Pre_condition  :  this function must be used after  		*/
 /*     				 SPI Initializtion 						*/
 /************************************************************/
-u8		SPI_VoidTransfer(u8 Copy_u8Date);
+void	TWI_VoidSendStart(u8 Copy_u8Date);
 
 
 
@@ -63,7 +62,7 @@ u8		SPI_VoidTransfer(u8 Copy_u8Date);
 /* Pre_condition  :  this function must be used after  		*/
 /*     				 SPI Initializtion 						*/
 /************************************************************/
-u8	SPI_U8ReadDateISR(void);
+void	TWI_VoidSendStop(void);
 
 
 
@@ -77,7 +76,7 @@ u8	SPI_U8ReadDateISR(void);
 /* Pre_condition  :  this function must be used after  		*/
 /*     				 SPI Initializtion 						*/
 /************************************************************/
-void	SPI_VoidSendDateISR(u8 Copy_u8Date);
+void	TWI_VoidSendSlaveACK(u8 Copy_u8Date);
 
 
 /************************************************************/
@@ -89,5 +88,17 @@ void	SPI_VoidSendDateISR(u8 Copy_u8Date);
 /* Pre_condition  :  this function must be used after  		*/
 /*     				 SPI Initializtion 						*/
 /************************************************************/
-void	SPI_VoidSetCallBack(void);
-#endif
+u8	TWI_VoidCheckStatus(void);
+
+
+
+/************************************************************/
+/* Description :  function to set the callback function   	*/
+/*				  using SPI in interrupt Mode				*/
+/*				  input	 :	void							*/
+/*				  output :	void							*/
+/************************************************************/
+/* Pre_condition  :  this function must be used after  		*/
+/*     				 SPI Initializtion 						*/
+/************************************************************/
+u8	TWI_VoidRecieveWithNACK(void);

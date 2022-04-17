@@ -126,7 +126,7 @@ void	ADC_VoidADCDisable(void);
 /*     				 ADC Initializtion	 					*/
 /************************************************************/
 
-void	ADC_VoidInterruptDisable(void);
+void	ADC_VoidInterruptEnable(void);
 
 
 

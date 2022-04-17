@@ -164,9 +164,9 @@ void	ADC_VoidADCEnable(void)
 
 
 /************************************************************/
-/* Description :  function to Read the ADC value 			*/
-/*				  input	 :	void								*/
-/*				  output :	u16							*/
+/* Description :  function to Read the ADC value by Poling	*/
+/*				  input	 :	void							*/
+/*				  output :	u16								*/
 /************************************************************/
 /* Pre_condition  :  this function must be used after  		*/
 /*     				 Start conversion	 					*/

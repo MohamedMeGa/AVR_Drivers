@@ -30,9 +30,8 @@
 /*				  input	 :	void							*/
 /*				  output :	void							*/
 /************************************************************/
-#if		MODE_OF_MASTER_SLAVE	==	MASTER
 
-void	SPI_VoidMASTERInitialization(void)
+void	IIC_VoidInitialization(void)
 {
 	SET_BIT(SPCR, 6);
 	
@@ -102,7 +101,7 @@ void	SPI_VoidMASTERInitialization(void)
 /*				  input	 :	void							*/
 /*				  output :	void							*/
 /************************************************************/
-#elif	MODE_OF_MASTER_SLAVE	==	SLAVE
+
 void	SPI_VoidSLAVEInitialization(void)
 {
 	SET_BIT(SPCR, 6);
