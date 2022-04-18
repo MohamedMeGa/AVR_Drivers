@@ -36,7 +36,9 @@
 /**							PRES_8_DIV	   		   */
 /**							PRES_64_DIV		   	   */
 /**							PRES_256_DIV    	   */
+/**		-->		1024 fast make 122 hz and 8 m s    */
 /**							PRES_1024_DIV	   	   */
+/**		-->		1024 fast make 0.25 hz and 4 u s   */
 /**							External_Falling	   */
 /**							External_Rising		   */
 /***************************************************/
