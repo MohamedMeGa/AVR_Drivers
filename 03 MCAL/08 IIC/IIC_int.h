@@ -10,14 +10,12 @@
 
 
 
-
-
 /***************************************************/
 /* Description :  PROTOTYPE DECLARTION 		   	   */
 /***************************************************/
 
 /************************************************************/
-/* Description :  function for initialization The SPI		*/
+/* Description :  function for initialization The TWI		*/
 /*				  in Master Mode							*/
 /*				  input	 :	void							*/
 /*				  output :	void							*/
@@ -27,13 +25,30 @@ void	TWI_VoidInitialization(void);
 
 
 
+
+
 /************************************************************/
-/* Description :  function for initialization The SPI		*/
-/*				  in SLAVE Mode								*/
+/* Description :  function to Send start Condtion of  		*/
+/*					TWI Master								*/
 /*				  input	 :	void							*/
 /*				  output :	void							*/
 /************************************************************/
+/* Pre_condition  :  this function must be used after  		*/
+/*     				 SPI Initializtion 						*/
+/************************************************************/
+void	TWI_VoidSendStart(void);
 
+
+
+
+/************************************************************/
+/* Description :  function to Send Data of  TWI Master 		*/
+/*				  input	 :	void							*/
+/*				  output :	u8								*/
+/************************************************************/
+/* Pre_condition  :  this function must be used after  		*/
+/*     				 TWI Send Slave Address Function 		*/
+/************************************************************/
 void	TWI_VoidSendByte(u8 data);
 
 
@@ -41,26 +56,13 @@ void	TWI_VoidSendByte(u8 data);
 
 
 /************************************************************/
-/* Description :  function for Transfer date using SPI		*/
-/*				  input	 :	u8								*/
-/*				  output :	u8								*/
-/************************************************************/
-/* Pre_condition  :  this function must be used after  		*/
-/*     				 SPI Initializtion 						*/
-/************************************************************/
-void	TWI_VoidSendStart(u8 Copy_u8Date);
-
-
-
-
-/************************************************************/
-/* Description :  function for Recieve date using SPI in 	*/
-/*				   interrupt Mode							*/
+/* Description :  function to Send Stop Condtion of  		*/
+/*					TWI Master								*/
 /*				  input	 :	void							*/
-/*				  output :	u8								*/
+/*				  output :	void							*/
 /************************************************************/
 /* Pre_condition  :  this function must be used after  		*/
-/*     				 SPI Initializtion 						*/
+/*     				 Sending all data 						*/
 /************************************************************/
 void	TWI_VoidSendStop(void);
 
@@ -68,22 +70,43 @@ void	TWI_VoidSendStop(void);
 
 
 /************************************************************/
-/* Description :  function for Send date using SPI in 		*/
-/*				   interrupt Mode							*/
+/* Description :  function for Send Slave TWI Address	 	*/
+/*				  in write Mode								*/
 /*				  input	 :	u8								*/
 /*				  output :	void							*/
 /************************************************************/
 /* Pre_condition  :  this function must be used after  		*/
-/*     				 SPI Initializtion 						*/
+/*     				 TWI Send Start Function 				*/
 /************************************************************/
-void	TWI_VoidSendSlaveACK(u8 Copy_u8Date);
+void	TWI_VoidSendSlaveADDWrite(u8 Copy_u8slaveAddress);
+
+
+
+
+
+
+/************************************************************/
+/* Description :  function for Send Slave TWI Address	 	*/
+/*				  in Read Mode								*/
+/*				  input	 :	u8								*/
+/*				  output :	void							*/
+/************************************************************/
+/* Pre_condition  :  this function must be used after  		*/
+/*     				 TWI Send Start Function 				*/
+/************************************************************/
+void	TWI_VoidSendSlaveADDRead(u8 Copy_u8slaveAddress);
+
+
+
+
+
 
 
 /************************************************************/
 /* Description :  function to set the callback function   	*/
 /*				  using SPI in interrupt Mode				*/
 /*				  input	 :	void							*/
-/*				  output :	void							*/
+/*				  output :	u8								*/
 /************************************************************/
 /* Pre_condition  :  this function must be used after  		*/
 /*     				 SPI Initializtion 						*/

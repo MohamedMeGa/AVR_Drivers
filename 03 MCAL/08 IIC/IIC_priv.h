@@ -59,16 +59,13 @@
 
 
 /***************************************************/
-/* Description :  MEMEROY MAPPING USART register  */
+/**** Description :  MEMEROY MAPPING IIC register **/
 /***************************************************/
-
-	#define	SPCR	*((volatile	u8	*)	0x2D)
-	#define	SPSR	*((volatile	u8	*)	0x2E)
-	#define	SPDR	*((volatile	u8	*)	0x2F)
-
-	
-
-
+#define     TWBR_REG       *((volatile u8 *)0x20)
+#define     TWCR_REG       *((volatile u8 *)0x56)
+#define     TWSR_REG       *((volatile u8 *)0x21)
+#define     TWDR_REG       *((volatile u8 *)0x23)
+#define     TWAR_REG       *((volatile u8 *)0x22)
 
 	
 #endif
