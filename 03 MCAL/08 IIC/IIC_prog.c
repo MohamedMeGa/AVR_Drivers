@@ -25,210 +25,299 @@
 /************************************************************/
 
 /************************************************************/
-/* Description :  function for initialization The SPI		*/
+/* Description :  function for initialization The TWI		*/
 /*				  in Master Mode							*/
 /*				  input	 :	void							*/
 /*				  output :	void							*/
 /************************************************************/
 
-void	IIC_VoidInitialization(void)
+#if MASTER_SLAVE_MODE	==	MASTER
+void	TWI_VoidMasterInitialization(void)
 {
-	SET_BIT(SPCR, 6);
-	
-	#if		MODE_OF_INTERRUPT	==	ENABLE
-		SET_BIT(SPCR, 7);
-	#elif	MODE_OF_INTERRUPT	==	DISABLE
-		CLEAR_BIT(SPCR, 7);
+	/**			select prescalle b1 0 in twsr			*/
+	#if TWI_FREQUENCY == PRES_1_DIV
+		CLEAR_BIT(TWSR, 0);
+		CLEAR_BIT(TWSR, 1);
+	#elif TWI_FREQUENCY == PRES_4_DIV
+		SET_BIT(TWSR, 0);
+		CLEAR_BIT(TWSR, 1);
+	#elif TWI_FREQUENCY == PRES_16_DIV
+		CLEAR_BIT(TWSR, 0);
+		SET_BIT(TWSR, 1);
+	#elif TWI_FREQUENCY == PRES_64_DIV
+		SET_BIT(TWSR, 0);
+		SET_BIT(TWSR, 1);
 	#endif
 	
-	SET_BIT(SPCR, 4);
-	
-	#if		DATE_ORDER			==	LSB_FIRST
-		SET_BIT(SPCR, 5);
-	#elif	DATE_ORDER			==	MSB_FIRST
-		CLEAR_BIT(SPCR, 5);
+	/**			TWI Acknowledge 					   */
+	#if TWI_ACK_MODE == ENABLE
+		SET_BIT(TWCR, 6);
+	#elif TWI_ACK_MODE == DISABLE
+		CLEAR_BIT(TWCR, 6);
 	#endif
 	
-	#if		CLOCK_POLARITY		==	HIGH_IDLE
-		SET_BIT(SPCR, 3);
-	#elif	CLOCK_POLARITY		==	LOW_IDLE
-		CLEAR_BIT(SPCR, 3);
-	#endif
 	
-	#if		CLOCK_PHASE			==	ZERO
-		CLEAR_BIT(SPCR, 2);
-	#elif	CLOCK_PHASE			==	ONE
-		SET_BIT(SPCR, 2);
-	#endif
 	
-	#if		SPI_FREQUENCY	==	F_CPU_BY_4
-		CLEAR_BIT(SPCR, 0);
-		CLEAR_BIT(SPCR, 1);
-		CLEAR_BIT(SPSR, 2);
-	#elif	SPI_FREQUENCY	==	F_CPU_BY_16
-		SET_BIT(SPCR, 	0);
-		CLEAR_BIT(SPCR, 1);
-		CLEAR_BIT(SPSR, 2);
-	#elif	SPI_FREQUENCY	==	F_CPU_BY_128
-		SET_BIT(SPCR, 0);
-		SET_BIT(SPCR, 1);
-		CLEAR_BIT(SPSR, 2);
-	#elif	SPI_FREQUENCY	==	F_CPU_BY_2
-		CLEAR_BIT(SPCR, 0);
-		CLEAR_BIT(SPCR, 1);
-		SET_BIT(SPSR, 2);
-	#elif	SPI_FREQUENCY	==	F_CPU_BY_8
-		SET_BIT(SPCR, 0);
-		CLEAR_BIT(SPCR, 1);
-		SET_BIT(SPSR, 2);
-	#elif	SPI_FREQUENCY	==	F_CPU_BY_32
-		CLEAR_BIT(SPCR, 0);
-		SET_BIT(SPCR, 1);
-		SET_BIT(SPSR, 2);
-	#elif	SPI_FREQUENCY	==	F_CPU_BY_64
-		SET_BIT(SPCR, 0);
-		SET_BIT(SPCR, 1);
-		SET_BIT(SPSR, 2);
-	#endif
+	/**			Enable TWI 								*/
+	SET_BIT(TWCR, 2);
 }
 
 
 
 
+
 /************************************************************/
-/* Description :  function for initialization The SPI		*/
-/*				  in SLAVE Mode								*/
+/* Description :  function to Send start Condtion of  		*/
+/*					TWI Master								*/
 /*				  input	 :	void							*/
 /*				  output :	void							*/
 /************************************************************/
-
-void	SPI_VoidSLAVEInitialization(void)
+/* Pre_condition  :  this function must be used after  		*/
+/*     				 SPI Initializtion 						*/
+/************************************************************/
+void	TWI_VoidSendStart(void)
 {
-	SET_BIT(SPCR, 6);
+	/**			Enable TWI 								*/
+	SET_BIT(TWCR, 2);
 	
-	#if		MODE_OF_INTERRUPT	==	ENABLE
-		SET_BIT(SPCR, 7);
-	#elif	MODE_OF_INTERRUPT	==	DISABLE
-		CLEAR_BIT(SPCR, 7);
-	#endif
+	/**			Start Condition 						*/
+	SET_BIT(TWCR, 5);
 	
-	CLEAR_BIT(SPCR, 4);
+	/**			Clear Flag 								*/
+	SET_BIT(TWCR, 7);
 	
-	#if		DATE_ORDER			==	LSB_FIRST
-		SET_BIT(SPCR, 5);
-	#elif	DATE_ORDER			==	MSB_FIRST
-		CLEAR_BIT(SPCR, 5);
-	#endif
-	
-	#if		CLOCK_POLARITY		==	HIGH_IDLE
-		SET_BIT(SPCR, 3);
-	#elif	CLOCK_POLARITY		==	LOW_IDLE
-		CLEAR_BIT(SPCR, 3);
-	#endif
-	
-	#if		CLOCK_PHASE			==	ZERO
-		CLEAR_BIT(SPCR, 2);
-	#elif	CLOCK_PHASE			==	ONE
-		SET_BIT(SPCR, 2);
-	#endif
-	
-	#if		SPI_FREQUENCY	==	F_CPU_BY_4
-		CLEAR_BIT(SPCR, 0);
-		CLEAR_BIT(SPCR, 1);
-		CLEAR_BIT(SPSR, 2);
-	#elif	SPI_FREQUENCY	==	F_CPU_BY_16
-		SET_BIT(SPCR, 	0);
-		CLEAR_BIT(SPCR, 1);
-		CLEAR_BIT(SPSR, 2);
-	#elif	SPI_FREQUENCY	==	F_CPU_BY_128
-		SET_BIT(SPCR, 0);
-		SET_BIT(SPCR, 1);
-		CLEAR_BIT(SPSR, 2);
-	#elif	SPI_FREQUENCY	==	F_CPU_BY_2
-		CLEAR_BIT(SPCR, 0);
-		CLEAR_BIT(SPCR, 1);
-		SET_BIT(SPSR, 2);
-	#elif	SPI_FREQUENCY	==	F_CPU_BY_8
-		SET_BIT(SPCR, 0);
-		CLEAR_BIT(SPCR, 1);
-		SET_BIT(SPSR, 2);
-	#elif	SPI_FREQUENCY	==	F_CPU_BY_32
-		CLEAR_BIT(SPCR, 0);
-		SET_BIT(SPCR, 1);
-		SET_BIT(SPSR, 2);
-	#elif	SPI_FREQUENCY	==	F_CPU_BY_64
-		SET_BIT(SPCR, 0);
-		SET_BIT(SPCR, 1);
-		SET_BIT(SPSR, 2);
-	#endif
+	while(GET_BIT(TWCR, 7) == 0 );
 }
 
 
 
 
-
 /************************************************************/
-/* Description :  function for Recieve date using SPI in 	*/
-/*				   interrupt Mode							*/
+/* Description :  function to Send Data of  TWI Master 		*/
 /*				  input	 :	void							*/
 /*				  output :	u8								*/
 /************************************************************/
 /* Pre_condition  :  this function must be used after  		*/
-/*     				 SPI Initializtion 						*/
+/*     				 TWI Send Slave Address Function 		*/
 /************************************************************/
-#if		MODE_OF_INTERRUPT	==	ENABLE
-
-u8	SPI_U8ReadDateISR(void)
+void	TWI_VoidMasterSendByte(u8 data)
 {
-	return SPDR;
+	TWDR = data;
+	
+	/**			Enable TWI 								*/
+	SET_BIT(TWCR, 2);
+	
+	/**			Clear Flag 								*/
+	SET_BIT(TWCR, 7);
+	
+	while(GET_BIT(TWCR, 7) == 0 );
 }
 
 
 
 
-/************************************************************/
-/* Description :  function for Send date using SPI in 		*/
-/*				   interrupt Mode							*/
-/*				  input	 :	u8								*/
-/*				  output :	void							*/
-/************************************************************/
-/* Pre_condition  :  this function must be used after  		*/
-/*     				 SPI Initializtion 						*/
-/************************************************************/
-void	SPI_VoidSendDateISR(u8 Copy_u8Date)
-{
-	SPDR = Copy_u8Date;
-}
-
 
 /************************************************************/
-/* Description :  function to set the callback function   	*/
-/*				  using SPI in interrupt Mode				*/
+/* Description :  function to Send Stop Condtion of  		*/
+/*					TWI Master								*/
 /*				  input	 :	void							*/
 /*				  output :	void							*/
 /************************************************************/
 /* Pre_condition  :  this function must be used after  		*/
-/*     				 SPI Initializtion 						*/
+/*     				 Sending all data 						*/
 /************************************************************/
-void	SPI_VoidSetCallBack(void)
+void	TWI_VoidSendStop(void)
 {
+	/**			Enable TWI 								*/
+	SET_BIT(TWCR, 2);
 	
+	/**			Start Condition 						*/
+	SET_BIT(TWCR, 4);
+	
+	/**			Clear Flag 								*/
+	SET_BIT(TWCR, 7);
 }
-#elif		MODE_OF_INTERRUPT	==	DISABLE
+
+
+
+
+
 
 /************************************************************/
-/* Description :  function for Transfer date using SPI		*/
+/* Description :  function for Send Slave TWI Address	 	*/
+/*				  in write Mode								*/
 /*				  input	 :	u8								*/
+/*				  output :	void							*/
+/************************************************************/
+/* Pre_condition  :  this function must be used after  		*/
+/*     				 TWI Send Start Function 				*/
+/************************************************************/
+void	TWI_VoidSendSlaveADDWrite(u8 Copy_u8slaveAddress)
+{
+	TWDR = Copy_u8slaveAddress << 1;
+	
+	/**			make Write option 						*/
+	SET_BIT(TWDR, 0);
+	
+	/**			Enable TWI 								*/
+	SET_BIT(TWCR, 2);
+	
+	/**			Clear Flag 								*/
+	SET_BIT(TWCR, 7);
+	
+	while(GET_BIT(TWCR, 7) == 0 );
+}
+
+
+
+
+
+
+/************************************************************/
+/* Description :  function for Send Slave TWI Address	 	*/
+/*				  in Read Mode								*/
+/*				  input	 :	u8								*/
+/*				  output :	void							*/
+/************************************************************/
+/* Pre_condition  :  this function must be used after  		*/
+/*     				 TWI Send Start Function 				*/
+/************************************************************/
+void	TWI_VoidSendSlaveADDRead(u8 Copy_u8slaveAddress)
+{
+	TWDR = Copy_u8slaveAddress << 1;
+	
+	/**			make Write option 						*/
+	CLEAR_BIT(TWDR, 0);
+	
+	/**			Enable TWI 								*/
+	SET_BIT(TWCR, 2);
+	
+	/**			Clear Flag 								*/
+	SET_BIT(TWCR, 7);
+	
+	while(GET_BIT(TWCR, 7) == 0 );
+}
+
+
+
+
+
+
+
+/************************************************************/
+/* Description :  function to Check TWI Status			   	*/
+/*				  input	 :	void							*/
 /*				  output :	u8								*/
 /************************************************************/
 /* Pre_condition  :  this function must be used after  		*/
-/*     				 SPI Initializtion 						*/
+/*     				 TWI Initializtion 						*/
 /************************************************************/
-u8		SPI_VoidTransfer(u8 Copy_u8Date)
+u8	TWI_VoidCheckStatus(void)
 {
-	SPDR	=	Copy_u8Date;
-	while(GET_BIT(SPSR, 7) == 0);
-	return SPDR
+	retrn TWSR & 0xF8;
+}
+
+
+
+
+
+#elif MASTER_SLAVE_MODE	==	SLAVE
+/************************************************************/
+/* Description :  function for initialization The TWI		*/
+/*				  in Slave Mode								*/
+/*				  input	 :	void							*/
+/*				  output :	void							*/
+/************************************************************/
+void	TWI_VoidSlaveInitialization(u8 copy_u8SlaveAddress)
+{
+	/**			Enable TWI 								*/
+	SET_BIT(TWCR, 2);
+	
+	TWAR = copy_u8SlaveAddress << 1;
+	
+	/**			TWI Broadcast Mode 					   */
+	#if TWI_BROADCAST == ENABLE
+		SET_BIT(TWAR, 0);
+	#elif TWI_BROADCAST == DISABLE
+		CLEAR_BIT(TWAR, 0);
+	#endif
+	
+	/**			Clear Flag 								*/
+	SET_BIT(TWCR, 7);
+	
+	/**			Enable TWI 								*/
+	SET_BIT(TWCR, 2);
+	
+	/**			Enable Acknowledge 						*/
+	SET_BIT(TWCR, 6);
+}
+
+
+
+
+
+/************************************************************/
+/* Description :  function to Send Data of  TWI Slave 		*/
+/*				  input	 :	void							*/
+/*				  output :	u8								*/
+/************************************************************/
+/* Pre_condition  :  this function must be used after  		*/
+/*     				 TWI Slave initialize			 		*/
+/************************************************************/
+void	TWI_VoidSlaveSendByte(u8 data)
+{
+	TWDR = data;
+	
+	/**			Enable TWI 								*/
+	SET_BIT(TWCR, 2);
+	
+	/**			Clear Flag 								*/
+	SET_BIT(TWCR, 7);
+	
+	/**			Enable Acknowledge 						*/
+	SET_BIT(TWCR, 6);
+	
+	while(GET_BIT(TWCR, 7) == 0 );
+}
+
+
+/************************************************************/
+/* Description :  function to listen on Data Bus		  	*/
+/*				  input	 :	void							*/
+/*				  output :	void							*/
+/************************************************************/
+/* Pre_condition  :  this function must be used after  		*/
+/*     				 TWI Slave Initializtion 				*/
+/************************************************************/
+void	TWI_VoidSlaveListen(void)
+{
+	while(GET_BIT(TWCR, 7) == 0 );
+}
+#endif
+
+
+
+
+
+/************************************************************/
+/* Description :  function Recieve one Byte Data From TWI  	*/
+/*				  input	 :	void							*/
+/*				  output :	u8								*/
+/************************************************************/
+/* Pre_condition  :  this function must be used after  		*/
+/*     				 TWI Initializtion 						*/
+/************************************************************/
+u8	TWI_VoidRecieveWithNACK(void)
+{
+	/**			Enable TWI 								*/
+	SET_BIT(TWCR, 2);
+	
+	/**			Clear Flag 								*/
+	SET_BIT(TWCR, 7);
+	
+	while(GET_BIT(TWCR, 7) == 0 );
+	
+	return TWDR;
 }
 
 

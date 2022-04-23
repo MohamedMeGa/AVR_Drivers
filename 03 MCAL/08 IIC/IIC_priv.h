@@ -8,53 +8,34 @@
 #ifndef	IIC_PRIV_H
 #define	IIC_PRIV_H
 
+
+
 /***************************************************/
-/**			MODE OF INTERRUPT Selections Options   */
+/**			Master Slave selections Options		   */
+/***************************************************/
+#define		MASTER				2
+#define		SLAVE				3
+
+
+/***************************************************/
+/**			Prescaller selections Options		   */
+/***************************************************/
+#define		PRES_1_DIV			1
+#define		PRES_4_DIV			2
+#define		PRES_16_DIV			3
+#define		PRES_64_DIV			4
+
+
+
+
+/***************************************************/
+/**			MODE OF Acknowledge Selections Options */
 /***************************************************/
 #define		DISABLE				4					
 #define		ENABLE				7
 
 
 
-/***************************************************/
-/**			MODE OF MASTER SLAVE Options	  	   */
-/***************************************************/
-#define		MASTER				0
-#define		SLAVE				1
-
-
-
-/***************************************************/
-/**			SPI FREQUENCY selections Options	   */
-/***************************************************/
-#define		5_BIT				0
-#define		6_BIT				1
-#define		7_BIT				2
-#define		8_BIT				3
-#define		9_BIT				4
-
-
-/***************************************************/
-/**			DATE ORDER selection Options	   	   */
-/***************************************************/
-#define		LSB_FIRST			3
-#define		MSB_FIRST			1
-
-
-
-
-/***************************************************/
-/**			CLOCK PHASE selection Options	   	   */
-/***************************************************/
-#define		ZERO				0
-#define		ONE					2
-
-
-/***************************************************/
-/**			CLOCK POLARITY selection Options 	   */
-/***************************************************/
-#define		FALLING				0
-#define		RISING				1
 
 
 

@@ -1,72 +1,55 @@
 /************************************************************/
 /* AUTHOR      : Mohamed MeGa	                   			*/
 /* DISCRIPTION : IIC DRIVER     			      			*/
-/* DATE        : 5 NOV 2021                       			*/
-/* VERSION     : V01                               			*/
+/* DATE        : 22 APR 2022                       			*/
+/* VERSION     : V1.1                               		*/
 /************************************************************/
 
 #ifndef	IIC_CONFIG_H
 #define	IIC_CONFIG_H
 
-#define F_CPU				8000000
-
-/***************************************************/
-/**			MODE OF INTERRUPT can be:			   */
-/**								ENABLE		   	   */
-/**								DISABLE			   */
-/***************************************************/
-#define		MODE_OF_INTERRUPT		DISABLE
-
+#ifndef
+	#define F_CPU				8000000
+#endif
 
 
 /***************************************************/
-/**			MODE OF MASTER SLAVE can be :		   */
-/**								MASTER   	 	   */
-/**								SLAVE			   */
+/**			Master Slave Mode Can be :			   */
+/**							ENABLE		   		   */
+/**							DISABLE			  	   */
 /***************************************************/
-#define		MODE_OF_MASTER_SLAVE	MASTER
-
-
+#define MASTER_SLAVE_MODE		MASTER
 
 
 
 /***************************************************/
-/**			SPI FREQUENCY Can be :			   	   */
-/**							F_CPU_BY_2   		   */
-/**							F_CPU_BY_4	   		   */
-/**							F_CPU_BY_8	 		   */
-/**							F_CPU_BY_16			   */
-/**							F_CPU_BY_64			   */
-/**							F_CPU_BY_64			   */
-/**							F_CPU_BY_128		   */
+/**			TWI FREQUENCY Can be :			   	   */
+/**							PRES_1_DIV   		   */
+/**							PRES_4_DIV	   		   */
+/**							PRES_16_DIV	 		   */
+/**							PRES_64_DIV			   */
 /***************************************************/
-#define		SPI_FREQUENCY		F_CPU_BY_2
-
-
-/***************************************************/
-/**			DATE ORDER Can Be :					   */
-/**							LSB_FIRST 	   	   	   */
-/**							MSB_FIRST	   		   */
-/***************************************************/
-#define		DATE_ORDER			LSB_FIRST
+#define		TWI_FREQUENCY		PRES_1_DIV
 
 
 
 /***************************************************/
-/**			CLOCK PHASE Can be :				   */
-/**							ZERO	   	 	   	   */
-/**							ONE	  	 			   */
+/**			TWI Acknowledge Can be :			   */
+/**							ENABLE		   		   */
+/**							DISABLE			  	   */
 /***************************************************/
-#define		CLOCK_PHASE			ZERO
+#define		TWI_ACK_MODE		ENABLE
 
 
 
 
 /***************************************************/
-/**			CLOCK POLARITY Can be :				   */
-/**								LOW_IDLE  		   */
-/**								HIGH_IDLE		   */
+/**			TWI Broadcast Mode Can be :			   */
+/**							ENABLE		   		   */
+/**							DISABLE			  	   */
 /***************************************************/
-#define		CLOCK_POLARITY			LOW_IDLE
+#define		TWI_BROADCAST		ENABLE
+
+
 
 #endif

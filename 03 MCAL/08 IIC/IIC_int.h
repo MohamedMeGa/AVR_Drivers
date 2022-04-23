@@ -21,8 +21,32 @@
 /*				  output :	void							*/
 /************************************************************/
 
-void	TWI_VoidInitialization(void);
+void	TWI_VoidMasterInitialization(void);
 
+
+
+
+
+/************************************************************/
+/* Description :  function for initialization The TWI		*/
+/*				  in Slave Mode								*/
+/*				  input	 :	void							*/
+/*				  output :	void							*/
+/************************************************************/
+void	TWI_VoidSlaveInitialization(u8 copy_u8SlaveAddress);
+
+
+
+
+/************************************************************/
+/* Description :  function to listen on Data Bus		  	*/
+/*				  input	 :	void							*/
+/*				  output :	void							*/
+/************************************************************/
+/* Pre_condition  :  this function must be used after  		*/
+/*     				 TWI Slave Initializtion 				*/
+/************************************************************/
+void	TWI_VoidSlaveListen(void);
 
 
 
@@ -36,7 +60,21 @@ void	TWI_VoidInitialization(void);
 /* Pre_condition  :  this function must be used after  		*/
 /*     				 SPI Initializtion 						*/
 /************************************************************/
-void	TWI_VoidSendStart(void);
+void	TWI_VoidMasterSendByte(void);
+
+
+
+/************************************************************/
+/* Description :  function to Send Data of  TWI Slave 		*/
+/*				  input	 :	void							*/
+/*				  output :	u8								*/
+/************************************************************/
+/* Pre_condition  :  this function must be used after  		*/
+/*     				 TWI Slave initialize			 		*/
+/************************************************************/
+void	TWI_VoidSlaveSendByte(u8 data);
+
+
 
 
 
@@ -103,23 +141,21 @@ void	TWI_VoidSendSlaveADDRead(u8 Copy_u8slaveAddress);
 
 
 /************************************************************/
-/* Description :  function to set the callback function   	*/
-/*				  using SPI in interrupt Mode				*/
+/* Description :  function to Check TWI Status			   	*/
 /*				  input	 :	void							*/
 /*				  output :	u8								*/
 /************************************************************/
 /* Pre_condition  :  this function must be used after  		*/
-/*     				 SPI Initializtion 						*/
+/*     				 TWI Initializtion 						*/
 /************************************************************/
 u8	TWI_VoidCheckStatus(void);
 
 
 
 /************************************************************/
-/* Description :  function to set the callback function   	*/
-/*				  using SPI in interrupt Mode				*/
+/* Description :  function Recieve Data From TWI		   	*/
 /*				  input	 :	void							*/
-/*				  output :	void							*/
+/*				  output :	u8								*/
 /************************************************************/
 /* Pre_condition  :  this function must be used after  		*/
 /*     				 SPI Initializtion 						*/
